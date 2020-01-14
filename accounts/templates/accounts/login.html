@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{# at the terminal, run pip install django-bootstrap4 #}
+{% load bootstrap4 %}
+
+
+{% block content %}
+<div class="container">
+  <h1>Login</h1>
+
+<!-- form default for LoginView: A Form object representing the AuthenticationForm. Codul de mai jos e luat din docs -->
+
+{% if form.errors %}
+<p>Your username and password didn't match or you user does not exist. Please try again.</p>
+{% endif %}
+
+ <form method="POST" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %} 
+    {% buttons %}
+      <button type="submit" class="btn btn-primary">Login</button>
+    {% endbuttons %}
+  </form> 
+  
+
+{% endblock %}
+
+
+
+
+
+ <!--   
+
+  <form method="post" action="{% url 'accounts:login' %}">   
+{% csrf_token %}  
+  <table>
+<tr>
+    <td>{{ form.username.label_tag }}</td>   
+    <td>{{ form.username }}</td>
+</tr>
+<tr>
+    <td>{{ form.password.label_tag }}</td>
+    <td>{{ form.password }}</td>
+</tr>
+</table>
+<button type="submit" class="btn btn-primary">Login</button>
+</form>
+</div>
+  -->
+
+
