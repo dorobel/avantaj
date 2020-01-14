@@ -6,7 +6,7 @@ from cbaccounts.models import Accounts
 
 
 
-class Clients(User):
+class Clients(models.Model):
     
     user = models.OneToOneField(User, on_delete=models.CASCADE, parent_link=True)
     
