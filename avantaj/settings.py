@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+FIELD_ENCRYPTION_KEY = '42qQ9IPaeExl-A-ZWYj25Ko4nSEHWdGVWXaJXywmPNI='
 
 # Application definition
 
@@ -41,7 +42,10 @@ INSTALLED_APPS = [
     'accounts',
     'cbaccounts',
     'clients',
+    'loans',
+    'cards',
     'bootstrap4', 
+    'encrypted_model_fields',
 ]
 
 MIDDLEWARE = [
