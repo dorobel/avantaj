@@ -1,0 +1,15 @@
+{% extends "clients/clients_base.html" %}
+
+{% load bootstrap4 %}
+
+{% block clients %}
+<h4>Create client</h4>
+<form method="POST"  id="postForm">
+	{% csrf_token %}
+	{% bootstrap_form form %}
+	{% buttons %}
+		<button type="submit" class="btn btn-primary btn-large">Create</button>
+		
+	{% endbuttons %}
+</form>
+{% endblock %}

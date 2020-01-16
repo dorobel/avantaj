@@ -86,8 +86,8 @@ WSGI_APPLICATION = 'avantaj.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'zbang',
-        'USER': 'zbang',
+        'NAME': 'zbang1',
+        'USER': 'zbang1',
         'PASSWORD': 'telefon',
         'HOST': 'localhost',
         'PORT': '3306',
