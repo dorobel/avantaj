@@ -4,6 +4,7 @@ from encrypted_model_fields.fields import EncryptedCharField
 from django.contrib import auth
 
 
+
 #pip install django-encrypted-model-fields
 #https://stackoverflow.com/questions/37741339/how-to-encrypt-textfield-before-saving-in-database
 #https://stackoverflow.com/questions/1743764/how-can-i-pass-a-user-model-into-a-form-field-django
