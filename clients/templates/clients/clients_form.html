@@ -3,6 +3,7 @@
 {% load bootstrap4 %}
 
 {% block clients %}
+
 <h4>Create client</h4>
 <form method="POST"  id="postForm">
 	{% csrf_token %}
@@ -12,4 +13,5 @@
 		
 	{% endbuttons %}
 </form>
+
 {% endblock %}

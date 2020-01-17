@@ -1,16 +1,13 @@
 from django.db import models
 from django.urls import reverse
-from django.contrib.auth.models import User
-from encrypted_model_fields.fields import EncryptedCharField
-#pip install django-encrypted-model-fields
-#https://stackoverflow.com/questions/1743764/how-can-i-pass-a-user-model-into-a-form-field-django
+from clients.models import Clients
+
 
 class Accounts(models.Model):
-    acct_nbr  = EncryptedCharField(max_length=16)
+    acct_nbr  = models.PositiveIntegerField()
     balance   = models.IntegerField()
     acct_type = models.CharField(max_length=2)
-    customer_id = models.ForeignKey(User, related_name="user_accounts_id",on_delete=models.DO_NOTHING(None, None, None, None)),
-    username = models.ForeignKey(User, related_name="user_accounts_name",on_delete=models.DO_NOTHING(None, None, None, None)),
+    username = models.ForeignKey(Clients, related_name="user_accounts",on_delete=models.DO_NOTHING(None, None, None, None)),
     
     
     def get_absolute_url(self):

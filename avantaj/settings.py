@@ -86,8 +86,8 @@ WSGI_APPLICATION = 'avantaj.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'zbang1',
-        'USER': 'zbang1',
+        'NAME': 'zbang',
+        'USER': 'zbang',
         'PASSWORD': 'telefon',
         'HOST': 'localhost',
         'PORT': '3306',
@@ -136,3 +136,5 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 LOGIN_REDIRECT_URL = 'welcome'
 LOGOUT_REDIRECT_URL = 'thanks'
+
+

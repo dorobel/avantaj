@@ -1,49 +1,42 @@
 from django import forms
-from .models import Clients
-from django.contrib.auth.models import User
-from _overlapped import NULL
+from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import UserCreationForm
+from clients.models import Clients
 
 '''
 Widgeturile sunt legate de clase CSS/Bootstrap
 
 '''   
 
-class ClientsForm(forms.ModelForm):
+class ClientsForm(UserCreationForm):
     cnp_nbr =forms.IntegerField(label='CNP', widget=forms.TextInput(attrs={'class': 'form-control'}))  
-    first_name = forms.CharField(label='Your name', widget=forms.TextInput(attrs={'class': 'form-control'}))  
-    last_name = forms.CharField(label='Last name', widget=forms.TextInput(attrs={'class': 'form-control'}))
     address = forms.CharField(label='Address', widget=forms.TextInput(attrs={'class': 'form-control'}))
     email = forms.EmailField(label='Your email', widget=forms.TextInput(attrs={'class': 'form-control'}))
     verify_email = forms.EmailField (label='Re-enter you email', widget=forms.TextInput(attrs={'class': 'form-control'}))
     
-    
-    class Meta:
+    class Meta(UserCreationForm.Meta):
         model = Clients
-        fields = ('first_name','last_name','cnp_nbr', 'address', 'email','verify_email')
+        fields = UserCreationForm.Meta.fields + ('password1','password2','cnp_nbr','address', 'email','verify_email')
+        
+        
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["username"].label = "Display name"
+        self.fields["email"].label = "Email address"
+        self.fields["password1"].label = "Passsword"
+        self.fields["password2"].label = "Retype Passsword"
 
         
     def clean(self):  # most used!!!
         all_clean_data = super().clean()
         email = all_clean_data['email']
-        vmail = all_clean_data['verify_email']
-        cnp=all_clean_data['cnp_nbr']
-        first_name = all_clean_data['first_name']
-        last_name = all_clean_data['last_name']
-        address = all_clean_data['address']
+        v_email = all_clean_data['verify_email']
         
-        if email != vmail:
+        if email != v_email:
             raise forms.ValidationError("MAKE SURE EMAILS MATCH!")
         
-        if cnp is NULL and len(cnp)<13:
-            raise forms.ValidationError("CNP cant be null or less than 13 ")
-        
-        if first_name is NULL:
-            raise forms.ValidationError("first_name cant be null ")
-        
-        if last_name is NULL:
-            raise forms.ValidationError("last_name cant be null ")
-        
-        if address is NULL:
-            raise forms.ValidationError("Address cant be null ")
-        
+        super().clean()
+    
+    
+    
         

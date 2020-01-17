@@ -15,8 +15,11 @@ class CreateClient( generic.CreateView):
     form_class = forms.ClientsForm     # sets class attribute -- Contextul va folosi acest form pt afisarea in pagina
     model = models.Clients             # sets class attribute   
 
-    success_url = reverse_lazy('post_list')
                                                  
              
- 
+class ClientView(generic.DetailView):
+    context_object_name = 'client_details'
+    model = models.Clients
+    
+
         
