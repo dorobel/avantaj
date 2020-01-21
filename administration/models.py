@@ -1,10 +1,9 @@
 from django.db import models
 from django.urls import reverse
-from encrypted_model_fields.fields import EncryptedCharField
 from django.contrib import auth
 
 
-
+#from encrypted_model_fields.fields import EncryptedCharField
 #pip install django-encrypted-model-fields
 #https://stackoverflow.com/questions/37741339/how-to-encrypt-textfield-before-saving-in-database
 #https://stackoverflow.com/questions/1743764/how-can-i-pass-a-user-model-into-a-form-field-django
@@ -15,7 +14,10 @@ class Clients(auth.models.User,auth.models.PermissionsMixin):
     cnp_nbr  = models.PositiveIntegerField()
     
     def get_absolute_url(self):
-        return reverse( "clients:client_detail", kwargs={ "pk": self.pk } )
+        return reverse( "administration:client_detail", kwargs={ "pk": self.pk } ) 
+    
+     # puteai folosi reverse lazy in view si
+     # return reverse( kwargs={ "pk": self.pk } )
       
       
     def __str__(self):

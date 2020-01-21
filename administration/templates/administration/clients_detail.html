@@ -1,11 +1,11 @@
-{% extends "clients/clients_base.html" %}
+{% extends "administration/administration_base.html" %}
 
 {% load bootstrap4 %}
 
 
-{% block clients %}
+{% block administration_clients %}
 
-{% if request.user.is_authenticated %} 
+{% if request.user.is_authenticated  %} 
 
     <h2>Client Details:</h2>
 

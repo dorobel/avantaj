@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'accounts',
     'cbaccounts',
-    'clients',
+    'administration',
     'loans',
     'cards',
     'bootstrap4', 

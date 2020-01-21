@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
-from clients.models import Clients
+from administration.models import Clients
 
 '''
 Widgeturile sunt legate de clase CSS/Bootstrap
@@ -33,7 +33,7 @@ class ClientsForm(UserCreationForm):
         v_email = all_clean_data['verify_email']
         
         if email != v_email:
-            raise forms.ValidationError("MAKE SURE EMAILS MATCH!")
+            raise forms.ValidationError("MAKE SURE EMAILS MATCH!!")
         
         super().clean()
     

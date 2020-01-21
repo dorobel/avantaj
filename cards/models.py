@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-from clients.models import Clients
+from administration.models import Clients
 from encrypted_model_fields.fields import EncryptedCharField
 
 
