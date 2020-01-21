@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
+from django import forms
 from administration.models import Clients
 
 '''
@@ -38,5 +39,17 @@ class ClientsForm(UserCreationForm):
         super().clean()
     
     
+class SearchForm(forms.ModelForm):  
+    cnp_nbr = forms.IntegerField(label='CNP', widget=forms.TextInput(attrs={'class': 'form-control'}))  
+    first_name = forms.IntegerField(label='First Name', widget=forms.TextInput(attrs={'class': 'form-control'}))  
+    last_name = forms.IntegerField(label='Last Name', widget=forms.TextInput(attrs={'class': 'form-control'}))
     
+    class Meta():
+        model = Clients                                
+        fields = ('cnp_nbr','first_name','last_name')
+        
+    def clean(self):
+        super().clean()
+        
+        
         

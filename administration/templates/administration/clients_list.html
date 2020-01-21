@@ -1,0 +1,20 @@
+{% extends "administration/administration_base.html" %}
+
+
+
+{% block administration_clients %}
+
+{% if request.user.is_authenticated  %} 
+
+
+      {% for client in clients_list %}
+        <p>{{client.first_name}} </p>
+         <p>{{client.last_name}} </p>
+          <p>{{client.cnp_nbr}} </p>
+      {% endfor %}
+
+
+{% endif %}
+
+
+{% endblock %}
