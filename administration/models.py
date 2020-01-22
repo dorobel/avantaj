@@ -14,7 +14,7 @@ class Clients(auth.models.User,auth.models.PermissionsMixin):
     cnp_nbr  = models.PositiveIntegerField()
     
     def get_absolute_url(self):
-        return reverse( "administration:client_detail", kwargs={ "pk": self.pk } ) 
+        return reverse( "administration:client_details", kwargs={ "pk": self.pk } ) 
     
      # puteai folosi reverse lazy in view si
      # return reverse( kwargs={ "pk": self.pk } )

@@ -1,51 +1,23 @@
 {% extends "administration/administration_base.html" %}
-
-
+{% load bootstrap4 %}
 {% block administration_clients %}
-
-
 {% if request.user.is_authenticated  %} 
 
 <h4>Search client</h4>
-
-<!-- 
-
- <form  action="url administration:clientslist" method="get" >
-      <button class="searchbutton" type="submit">
-        <i class="fa fa-search"></i>
-      </button>
-      <input class="searchfield" id="searchbox" name="q" type="text" placeholder="Search">
-    </form>
--->
-
-
-    
-    
-    <form method='GET'   action="." class="form">
+ 
+ <form method="GET"  action="{% url 'administration:searchresults' %}"  >
     {% csrf_token %}
-    {% bootstrap_form form %}
-
-    {% buttons %}
-    <button name="submit" class="btn btn-success">Search</button>
-    {% endbuttons %}
-    <input type="hidden" name="q" >
-</form>
-  
-  {% if query %}
-    {% if results %}
-    <ul>
-    {% for item in results %}
-        <li>{{ item|escape }}</li>
-    {% endfor %}
-    </ul>
-    {% else %}
-       <p>Query returned no results.</p>
-    {% endif %}
+    {{ form.as_p }}
+    <input type="submit" class='btn btn-primary' value="Submit" >
+  </form>
+ 
+ 
+ <!--     
+    <form method="GET" action="{% url 'administration:searchresults' %}" >
+	 <input name="q" type="text" placeholder="Search...">
+	</form>
+-->
+	
 {% endif %}
-
-  
-
-{% endif %}
-
-
 {% endblock %}
+

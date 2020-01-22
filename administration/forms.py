@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from administration.models import Clients
-
+from django.forms.widgets import Input, TextInput
 '''
 Widgeturile sunt legate de clase CSS/Bootstrap
 
@@ -40,16 +40,15 @@ class ClientsForm(UserCreationForm):
     
     
 class SearchForm(forms.ModelForm):  
-    cnp_nbr = forms.IntegerField(label='CNP', widget=forms.TextInput(attrs={'class': 'form-control'}))  
-    first_name = forms.IntegerField(label='First Name', widget=forms.TextInput(attrs={'class': 'form-control'}))  
-    last_name = forms.IntegerField(label='Last Name', widget=forms.TextInput(attrs={'class': 'form-control'}))
+    cnp_nbr = forms.IntegerField(label='CNP', widget=forms.TextInput(attrs={'class': 'form-control','name': 'q' }), required=False)  
+    first_name = forms.CharField(label='First Name', widget=forms.TextInput(attrs={'class': 'form-control','name': 'q'}),  required=False)  
+    last_name = forms.CharField(label='Last Name', widget=forms.TextInput(attrs={'class': 'form-control','name': 'q'}),  required=False)
+
     
     class Meta():
         model = Clients                                
         fields = ('cnp_nbr','first_name','last_name')
         
-    def clean(self):
-        super().clean()
         
         
         

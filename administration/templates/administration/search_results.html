@@ -1,0 +1,20 @@
+{% extends "administration/administration_base.html" %}
+{% load bootstrap4 %}
+{% block administration_clients %}
+{% if request.user.is_authenticated  %} 
+
+
+
+<h1>Search Results</h1>
+
+<ul>
+  {% for pers in all_search_results %}
+    <li>
+      {{ pers.cnp_nbr }}, {{ pers.first_name }},{{ pers.last_name }}
+    </li>
+  {% endfor %}
+</ul>
+
+
+{% endif %}
+{% endblock %}
