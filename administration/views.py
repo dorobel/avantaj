@@ -22,11 +22,10 @@ class ClientView(generic.DetailView):
     # template_name = 'administration/clients_search.html'    
     #form_class = forms.SearchForm
     
-class ClientsSearch(generic.CreateView):
+class ClientsSearch(generic.FormView):
     form_class = forms.SearchForm
+    model = models.Clients
     template_name = "administration/clients_search.html"
-    
-
 
 class SearchResults (generic.ListView):
     model = models.Clients
