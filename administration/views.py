@@ -35,7 +35,7 @@ class SearchResults (generic.ListView):
     def get_queryset(self): 
         query = self.request.GET.get('q')
         return self.model.objects.filter(
-            Q(cnp_nbr__icontains=query) | Q(first_name__icontains=query)| Q(last_name__icontains=query)
+            Q(cnp_nbr__icontains=query) | Q(first_name__icontains=query) | Q(last_name__icontains=query)
         )
         
         
