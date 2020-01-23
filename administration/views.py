@@ -8,8 +8,14 @@ class CreateClient( generic.CreateView):
     form_class = forms.ClientsForm     # sets class attribute -- Contextul va folosi acest form pt afisarea in pagina
     model = models.Clients             # sets class attribute   
 
-                                                 
-             
+
+class ClientUpdateView(generic.UpdateView):              
+    model = models.Clients  
+    context_object_name = 'client_details'
+    fields = ('username','first_name', 'last_name','cnp_nbr','address', 'email')  
+    
+    
+    
 class ClientView(generic.DetailView):
     context_object_name = 'client_details'
     model = models.Clients

@@ -9,12 +9,15 @@
 
 <ul>
   {% for pers in all_search_results %}
-    <li>
-      {{ pers.cnp_nbr }}, {{ pers.first_name }},{{ pers.last_name }}
-    </li>
+      <a href="{% url 'administration:client_details' pk=pers.pk %}">{{ pers.cnp_nbr }}, {{ pers.first_name }},{{ pers.last_name }}
   {% endfor %}
 </ul>
 
 
+
+
 {% endif %}
 {% endblock %}
+
+
+

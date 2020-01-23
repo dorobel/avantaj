@@ -15,6 +15,10 @@
     <p>Address: {{client_details.address}}</p>
     <p>CNP: {{client_details.cnp_nbr}}</p>
 
+
+ <p><a class='btn btn-warning' href="{% url 'administration:update' pk=client_details.pk %}"> Update </a></p>   
+ 
+
 {% endif %}
 
 
