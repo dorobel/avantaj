@@ -40,15 +40,13 @@ class ClientsForm(UserCreationForm):
     
     
 class SearchForm(forms.ModelForm):  
-    cnp_nbr = forms.IntegerField(label='CNP', widget=forms.TextInput(attrs={'class': 'form-control','name': 'q' }), required=False)  
-    first_name = forms.CharField(label='First Name', widget=forms.TextInput(attrs={'class': 'form-control','name': 'q'}),  required=False)  
-    last_name = forms.CharField(label='Last Name', widget=forms.TextInput(attrs={'class': 'form-control','name': 'q'}),  required=False)
-
-    
+    cnp_nbr = forms.IntegerField(label='CNP', widget=forms.TextInput(attrs={'class': 'form-control' }), required=False)  
+    first_name = forms.CharField(label='First Name', widget=forms.TextInput(attrs={'class': 'form-control'}),  required=False)  
+    last_name = forms.CharField(label='Last Name', widget=forms.TextInput(attrs={'class': 'form-control'}),  required=False)
+ 
+       
     class Meta():
         model = Clients                                
         fields = ('cnp_nbr','first_name','last_name')
         
-        
-        
-        
+
