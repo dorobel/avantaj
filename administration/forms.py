@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from administration.models import Clients
 from django.forms.widgets import Input, TextInput
+from django.forms.forms import Form
 '''
 Widgeturile sunt legate de clase CSS/Bootstrap
 
@@ -37,21 +38,21 @@ class ClientsForm(UserCreationForm):
         
         if email != v_email:
             raise forms.ValidationError("MAKE SURE EMAILS MATCH!!")
-        
+
         super().clean()
     
     
-class SearchForm(forms.ModelForm):  
+class SearchForm(forms.Form):  
     cnp_nbr = forms.IntegerField(label='CNP', widget=forms.TextInput(attrs={'class': 'form-control' }), required=False)  
     first_name = forms.CharField(label='First Name', widget=forms.TextInput(attrs={'class': 'form-control'}),  required=False)  
     last_name = forms.CharField(label='Last Name', widget=forms.TextInput(attrs={'class': 'form-control'}),  required=False)
  
-       
+  
+            
     class Meta():
         model = Clients                                
         fields = ('cnp_nbr','first_name','last_name')
-        
-
+            
 '''
    def clean(self):  # most used!!!
         all_clean_data = super().clean()
@@ -63,4 +64,12 @@ class SearchForm(forms.ModelForm):
             raise forms.ValidationError("Enter f1 or f2&f3")
     
         return all_clean_data
+        
+        
+                
+        if email != vmail:
+            raise forms.ValidationError("MAKE SURE EMAILS MATCH!")
+        
+        if email[0].lower() !='d':
+            raise forms.ValidationError("email needs to start with d de la Doro")
 '''

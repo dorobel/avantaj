@@ -1,5 +1,4 @@
 {% extends "administration/administration_base.html" %}
-{% load bootstrap4 %}
 {% block administration_clients %}
 {% if request.user.is_authenticated  %} 
 
@@ -11,14 +10,7 @@
     <button class="btn btn-primary" id="search_submit" name = "search_submit" type="submit" > Search</button>
   </form>
  
- 
- 
- 
- <!--     
-    <form method="GET" action="{% url 'administration:searchresults' %}" >
-	 <input name="q" type="text" placeholder="Search...">
-	</form>
--->
+
 	
 {% endif %}
 {% endblock %}
