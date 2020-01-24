@@ -52,6 +52,17 @@ class SearchForm(forms.Form):
     class Meta():
         model = Clients                                
         fields = ('cnp_nbr','first_name','last_name')
+    
+    def clean(self):  # most used!!!
+        all_clean_data = super().clean()
+        cnp_nbr = all_clean_data['cnp_nbr']
+        first_name = all_clean_data['first_name']
+        last_name = all_clean_data['last_name']
+
+        if not cnp_nbr or not (first_name and last_name):
+            raise forms.ValidationError("Enter f1 or f2&f3")
+    
+        return all_clean_data
             
 '''
    def clean(self):  # most used!!!
