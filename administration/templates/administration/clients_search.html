@@ -4,7 +4,7 @@
 
 <h4>Search client</h4>
  
- <form method="GET"  action="{% url 'administration:searchresults' %}"  >
+ <form method="POST" >
     {% csrf_token %}
     {{ form.as_p }}
     <button class="btn btn-primary" id="search_submit" name = "search_submit" type="submit" > Search</button>
@@ -15,3 +15,13 @@
 {% endif %}
 {% endblock %}
 
+<!-- 
+
+ <form method="GET"  action="{% url 'administration:searchresults' %}"  >
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-primary" id="search_submit" name = "search_submit" type="submit" > Search</button>
+  </form>
+ 
+
+ -->
