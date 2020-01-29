@@ -2,7 +2,7 @@
 {% block administration_clients %}
 {% if request.user.is_authenticated  %} 
 
-<h4>Search client</h4>
+<h4>Search client (enter CNP or First name& Last Name )</h4>
  
  <form method="POST" >
     {% csrf_token %}
@@ -23,3 +23,5 @@
  
 
  -->
+ 
+ 
