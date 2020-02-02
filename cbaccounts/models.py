@@ -7,7 +7,7 @@ class Accounts(models.Model):
     acct_nbr  = models.PositiveIntegerField()
     balance   = models.IntegerField()
     acct_type = models.CharField(max_length=2)
-    username = models.ForeignKey(Clients, related_name="user_accounts",on_delete=models.DO_NOTHING(None, None, None, None)),
+    username = models.ForeignKey(Clients, related_name="user_accounts",on_delete=models.DO_NOTHING),
     
     
     def get_absolute_url(self):

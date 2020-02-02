@@ -9,7 +9,7 @@ class Loans(models.Model):
     loan_amt  = models.PositiveIntegerField
     start_date = models.DateTimeField(blank=True, null=True)
     close_date = models.DateTimeField(blank=True, null=True)
-    customer_id = models.ForeignKey(User, related_name="user_accounts",on_delete=models.DO_NOTHING(None, None, None, None)),
+    customer_id = models.ForeignKey(User, related_name="user_accounts",on_delete=models.DO_NOTHING),
     
    
     def get_absolute_url(self):
