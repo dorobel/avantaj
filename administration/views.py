@@ -42,7 +42,7 @@ class SearchResults (generic.ListView):
     
     def get_queryset(self): 
             return self.model.objects.filter(
-            Q(cnp_nbr__exact=self.request.session['cnp_nbr']) | Q(first_name__exact=self.request.session['first_name']) & Q(last_name__exact=self.request.session['last_name']) 
+            Q(cnp_nbr__exact=self.request.session['cnp_nbr']) | Q(first_name__iexact=self.request.session['first_name']) & Q(last_name__iexact=self.request.session['last_name']) 
         )
         
     
