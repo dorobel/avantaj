@@ -28,7 +28,7 @@ class ClientsSearch(generic.FormView):
     template_name = "administration/clients_search.html"
     success_url = reverse_lazy('administration:searchresults')
     
-    def form_valid(self, form):     
+    def form_valid(self, form):     # doar verifica ca datele au fost introduse in form corect!
         self.request.session['cnp_nbr'] = form.cleaned_data['cnp_nbr']
         self.request.session['first_name'] = form.cleaned_data['first_name']
         self.request.session['last_name'] = form.cleaned_data['last_name']
