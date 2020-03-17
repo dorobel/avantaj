@@ -2,7 +2,7 @@ from django.contrib.auth import login, logout
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from .forms import *
-
+from django.contrib.auth.views import PasswordChangeView
 
 
 # Create your views here.
@@ -12,3 +12,6 @@ class SignUp(CreateView):
     template_name = "accounts/signup.html"
 
 
+class PasswordResetByUser(PasswordChangeView):  #req login first
+    template_name = "accounts/reset_by_user.html"
+    success_url = reverse_lazy("accounts:login")

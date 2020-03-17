@@ -6,6 +6,7 @@ from django.forms import ValidationError
 from django.template.context_processors import request
 from django.urls import reverse_lazy,reverse
 
+
 class CreateClient( generic.CreateView):
     form_class = forms.ClientsForm     # sets class attribute -- Contextul va folosi acest form pt afisarea in pagina
     model = models.Clients             # sets class attribute   
@@ -16,7 +17,7 @@ class ClientUpdateView(generic.UpdateView):
     context_object_name = 'client_details'
     fields = ('username','first_name', 'last_name','cnp_nbr','address', 'email')  
     
-    
+      
 class ClientView(generic.DetailView):
     context_object_name = 'client_details'
     model = models.Clients
@@ -33,7 +34,6 @@ class ClientsSearch(generic.FormView):
         self.request.session['first_name'] = form.cleaned_data['first_name']
         self.request.session['last_name'] = form.cleaned_data['last_name']
         return super().form_valid(form)
-    
 
 class SearchResults (generic.ListView):
     model = models.Clients

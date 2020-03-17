@@ -74,6 +74,5 @@ class SearchForm(forms.Form):
                 # DC cnp_nbr are valoare (FALSE) si conditia ( first_name =='' or last_name =='' ) intoarce FALSE    ==> FALSE => NO Validation error
                 
         
-            
    
     
