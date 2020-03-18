@@ -56,6 +56,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
 ]
 
 ROOT_URLCONF = 'avantaj.urls'
@@ -134,7 +137,12 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 
-LOGIN_REDIRECT_URL = 'welcome'
+LOGIN_REDIRECT_URL = 'welcome'  #nu mai e necesar dc setez next in login.html https://docs.djangoproject.com/en/3.0/topics/auth/default/#django.contrib.auth.views.PasswordChangeView
 LOGOUT_REDIRECT_URL = 'thanks'
 
-
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11711',
+    }
+}

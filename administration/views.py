@@ -5,26 +5,30 @@ from django.db.models import Q
 from django.forms import ValidationError
 from django.template.context_processors import request
 from django.urls import reverse_lazy,reverse
-
-
-class CreateClient( generic.CreateView):
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.decorators.cache import cache_page
+from django.views.decorators.vary import vary_on_headers
+# Un user nu poate sa creeze/caute/updateze clienti samd pt ca in codul HTML are restrictia '{% if request.user.is_authenticated  %}"
+# Un user nelogat ce acceseaza un URL al unuia din viewuri va vedea o pagina goala
+# Pentru a i se afisa un ecran de ogin adugam  LoginRequiredMixin!
+# Vezi https://docs.djangoproject.com/en/3.0/topics/auth/default/#django.contrib.auth.views.PasswordChangeView
+class CreateClient(LoginRequiredMixin, generic.CreateView):
     form_class = forms.ClientsForm     # sets class attribute -- Contextul va folosi acest form pt afisarea in pagina
     model = models.Clients             # sets class attribute   
 
 
-class ClientUpdateView(generic.UpdateView):              
+class ClientUpdateView(LoginRequiredMixin, generic.UpdateView):              
     model = models.Clients  
     context_object_name = 'client_details'
     fields = ('username','first_name', 'last_name','cnp_nbr','address', 'email')  
     
       
-class ClientView(generic.DetailView):
+class ClientView(LoginRequiredMixin, generic.DetailView):
     context_object_name = 'client_details'
     model = models.Clients
     template_name = "administration/client_details.html"
-  
-  
-class ClientsSearch(generic.FormView):
+
+class ClientsSearch(LoginRequiredMixin, generic.FormView):
     form_class = forms.SearchForm
     template_name = "administration/clients_search.html"
     success_url = reverse_lazy('administration:searchresults')
@@ -35,7 +39,7 @@ class ClientsSearch(generic.FormView):
         self.request.session['last_name'] = form.cleaned_data['last_name']
         return super().form_valid(form)
 
-class SearchResults (generic.ListView):
+class SearchResults (LoginRequiredMixin, generic.ListView):
     model = models.Clients
     template_name='administration/search_results.html'
     context_object_name = 'all_search_results'
