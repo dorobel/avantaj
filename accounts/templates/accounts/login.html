@@ -11,7 +11,9 @@
 <!-- form default for LoginView: A Form object representing the AuthenticationForm. Codul de mai jos e luat din docs -->
 
 {% if form.errors %}
-<p>Your username and password didn't match or you user does not exist. Please try again.</p>
+<p> Your username and password didn't match or you user does not exist. Please try again.</p>
+<p> If you forgot you password you could  try to <a  href="{% url 'accounts:password_reset' %}" >reset you password!</a> </p>
+
 {% endif %}
 
  <form method="POST" class="form">

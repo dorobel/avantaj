@@ -8,6 +8,8 @@ from django.urls import reverse_lazy,reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_headers
+
+
 # Un user nu poate sa creeze/caute/updateze clienti samd pt ca in codul HTML are restrictia '{% if request.user.is_authenticated  %}"
 # Un user nelogat ce acceseaza un URL al unuia din viewuri va vedea o pagina goala
 # Pentru a i se afisa un ecran de ogin adugam  LoginRequiredMixin!
@@ -44,13 +46,31 @@ class SearchResults (LoginRequiredMixin, generic.ListView):
     template_name='administration/search_results.html'
     context_object_name = 'all_search_results'
     
+     
     def get_queryset(self): 
             return self.model.objects.filter(
             Q(cnp_nbr__exact=self.request.session['cnp_nbr']) | Q(first_name__iexact=self.request.session['first_name']) & Q(last_name__iexact=self.request.session['last_name']) 
-        )
-        
-    
+        ) 
 
+
+'''
+Nu merge asa (cumva forms.as_p nu seteaza "name" sau ceva)
+
+    def get_queryset(self): 
+            return self.model.objects.filter(
+            Q(cnp_nbr__exact=self.request.POST.get("cnp_nbr")) | Q(first_name__iexact=self.request.POST.get("first_name")) & Q(last_name__iexact=self.request.POST.get("last_name")) 
+        ) 
+
+        
+Asa merrge:
+
+ def get_queryset(self): 
+            return self.model.objects.filter(
+            Q(cnp_nbr__exact=self.request.session['cnp_nbr']) | Q(first_name__iexact=self.request.session['first_name']) & Q(last_name__iexact=self.request.session['last_name']) 
+        ) 
+
+'''
+        
 '''
 class ClientsSearch(generic.FormView):
     form_class = forms.SearchForm

@@ -14,6 +14,11 @@ urlpatterns = [
                                                                                                     
     path('signup/', views.SignUp.as_view(), name="signup"),  #http://127.0.0.1:8000/accounts/signup/
     path('passwordch/', views.PasswordChangeByUser.as_view(), name="pwdchange"),
+    
+    path('password_reset/', views.PasswordResetView.as_view(), name="password_reset"),
+    path('password_reset_done/', views.PasswordResetView.as_view(), name="password_reset_done"),
+    path('password_reset_confirm/<uidb64>/<token>/', views.PasswordResetConfirmView.as_view(), name="password_reset_confirm"),
+    path('password_reset_complete/', views.PasswordResetCompleteView.as_view(), name="password_reset_complete"),
 ]
 
 
