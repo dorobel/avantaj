@@ -24,7 +24,7 @@ class PasswordResetView(PasswordResetView):
     #form_class = forms.PasswordResetForm
     template_name = "accounts/password_reset.html"
     success_url = reverse_lazy("accounts:password_reset_done")
-    #subject_template_name = "accounts/emails/password-reset-subject.txt"
+    subject_template_name = "accounts/password_reset_subject.txt"
     email_template_name = "accounts/password_reset_email.html"    
     
 class PasswordResetDoneView(PasswordResetDoneView):
